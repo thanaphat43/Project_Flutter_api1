@@ -2,8 +2,6 @@ import 'package:day14/Pageadmin/Mamager_User/Search_user.dart';
 import 'package:day14/Pageadmin/Mamager_User/Show_Drop_User.dart';
 import 'package:day14/Pageadmin/Mamager_User/Show_Edit_User.dart';
 import 'package:day14/Pageadmin/Mamager_User/newdata.dart';
-import 'package:day14/Pageadmin/ManageRoom/Adduser.dart';
-import 'package:day14/Pageadmin/ManageRoom/ShowUser.dart';
 import 'package:day14/Pageadmin/Manager_Room/ShowRoom_Drop.dart';
 import 'package:day14/Pageadmin/Manager_Room/ShowRoom_Edit.dart';
 import 'package:flutter/cupertino.dart';

@@ -3,13 +3,14 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:day14/Pageadmin/Mamager_User/editdata.dart';
-import 'package:day14/Pageadmin/ManageUser/ShowUserid.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_mysql_crud/pageAdmin/Mamager_User/editdata.dart';
 import 'package:http/http.dart' as http;
 
 import '../../connect/ip.dart';
+import '../../pageUser/PageLocation.dart';
 
 class Search_user extends StatefulWidget {
   Search_user() : super();
@@ -148,7 +149,7 @@ class Search_userState extends State<Search_user> {
                       onTap: () => Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) =>
-                              PageRoom1(list: userLists, index: index),
+                              PageRoom(list: userLists, index: index),
                           // (userLists: userLists, index: index)
                         ),
                       ),
