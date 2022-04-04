@@ -3,9 +3,6 @@
 import 'package:day14/pageUser/Table.dart';
 import 'package:day14/pageUser/chart.dart';
 
-import 'package:day14/pageUser/chart/chaeck_datetime.dart';
-import 'package:day14/pageUser/chart/chart.dart';
-import 'package:day14/pageUser/chart/last_data.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_mysql_crud/page1/component/chart.dart';
 import 'dart:async';
@@ -13,6 +10,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../connect/ip.dart';
+import '../../pageUser/data_temp/chaeck_datetime.dart';
+import '../../pageUser/data_temp/last_data.dart';
 
 class PageRoom extends StatefulWidget {
   List list;
@@ -136,9 +135,9 @@ Row buildDisplaychat(String textApi) {
             ),
             Container(
               width: 300,
-              height: 300,
-              // child: AgeCharts(Api: textApi),
-              child: DateTimeComboLinePointChart.withSampleData(),
+              height: 350,
+              child: AgeCharts(Api: textApi),
+              // child: DateTimeComboLinePointChart.withSampleData(),
             ),
           ],
         ),

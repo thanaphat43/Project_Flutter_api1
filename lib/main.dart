@@ -6,9 +6,10 @@ import 'package:day14/Weather/screens/loading_screen2.dart';
 import 'package:day14/homeapp.dart';
 import 'package:day14/pageUser/LoginUser.dart';
 import 'package:day14/pageUser/PageLocation.dart';
-import 'package:day14/pageUser/chart/last_data_notify.dart';
+
+import 'package:day14/pageUser/data_temp/last_data_notify.dart';
 import 'package:day14/pageUser/screens/launcher.dart';
-import 'package:day14/pageUser/SearchRoom.dart';
+import 'package:day14/pageUser/SearchLocation.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: LoadingScreen(),
+      home: AdminSetting(),
     );
   }
 }

@@ -9,8 +9,8 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../connect/ip.dart';
-import 'chart/last_data.dart';
-import 'chart/last_data_notify.dart';
+
+import 'data_temp/last_data_notify.dart';
 
 class SearchRoom extends StatefulWidget {
   SearchRoom() : super();

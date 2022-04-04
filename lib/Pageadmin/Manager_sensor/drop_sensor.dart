@@ -1,4 +1,4 @@
-import 'package:day14/Pageadmin/Mamager_User/Show_Drop_User.dart';
+import 'package:day14/Pageadmin/Manager_User/Show_Drop_User.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +6,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../connect/ip.dart';
+import 'admin_setting_sensor.dart';
 
 class Drop_sensor extends StatefulWidget {
   final List list;
@@ -30,7 +31,7 @@ class _EditState extends State<Drop_sensor> {
   void confirm() {
     AlertDialog alertDialog = new AlertDialog(
       content: new Text(
-          "คุณต้องการลบหน่วยงานนี้ออกจากระบบใช่หรือไม่'${widget.list[widget.index]['sensor_name']}'"),
+          "คุณต้องการลบเครื่องวัดอุณหภูมินี้ออกจากระบบใช่หรือไม่'${widget.list[widget.index]['sensor_name']}'"),
       actions: <Widget>[
         new RaisedButton(
           child: new Text(
@@ -41,7 +42,7 @@ class _EditState extends State<Drop_sensor> {
           onPressed: () {
             deleteData();
             Navigator.of(context).push(new MaterialPageRoute(
-              builder: (BuildContext context) => new DropUser(),
+              builder: (BuildContext context) => new Manage_Sensor(),
             ));
           },
         ),
@@ -68,7 +69,8 @@ class _EditState extends State<Drop_sensor> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("ระงับผู้ใช้ ${widget.list[widget.index]['sensor_name']}"),
+        title: Text(
+            "ลบเครื่องวัดอุณหภูมิ ${widget.list[widget.index]['sensor_name']}"),
       ),
       body: ListView(
         children: [
@@ -86,14 +88,14 @@ class _EditState extends State<Drop_sensor> {
                   child: Column(
                     children: [
                       Container(
-                        child: Text("ระงับผู้ใช้"),
+                        child: Text("ลบเครื่องวัดอุณหภูมิ"),
                       ),
                       TextField(
                         controller: name_position,
                         decoration: InputDecoration(
                             hintText:
                                 "${widget.list[widget.index]['sensor_name']}",
-                            labelText: "ตำแหน่ง"),
+                            labelText: "ชื่อsensor_name"),
                       ),
                     ],
                   ),
@@ -106,11 +108,11 @@ class _EditState extends State<Drop_sensor> {
             height: 60,
             child: FlatButton(
               onPressed: () {
-                // confirm();
-                deleteData();
+                confirm();
+                // deleteData();
               },
               child: Text(
-                'ลบหน่วยงาน',
+                'ลบเครื่องวัดอุณหภูมิ',
                 style: TextStyle(color: Colors.red, fontSize: 15),
               ),
             ),

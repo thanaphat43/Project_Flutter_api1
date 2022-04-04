@@ -1,9 +1,6 @@
 import 'package:day14/pageUser/Table.dart';
 import 'package:day14/pageUser/chart.dart';
-import 'package:day14/pageUser/chart/chaeck_datetime.dart';
-// ignore: unused_import
-import 'package:day14/pageUser/chart/chart.dart';
-import 'package:day14/pageUser/chart/last_data.dart';
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -11,6 +8,8 @@ import 'package:http/http.dart' as http;
 // ignore: unused_import
 import 'package:shared_preferences/shared_preferences.dart';
 import '../connect/ip.dart';
+import 'data_temp/chaeck_datetime.dart';
+import 'data_temp/last_data.dart';
 
 class PageRoom extends StatefulWidget {
   PageRoom({this.list, this.index});

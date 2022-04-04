@@ -1,4 +1,4 @@
-import 'package:day14/Pageadmin/Mamager_User/Show_Drop_User.dart';
+import 'package:day14/Pageadmin/Manager_User/Show_Drop_User.dart';
 import 'package:day14/Pageadmin/Manager_Room/ShowRoom_Drop.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -142,20 +142,20 @@ class _EditState extends State<dropdata_room> {
                                 "${widget.list[widget.index]['room_name']}",
                             labelText: "ชื่อสถานที่"),
                       ),
-                      TextField(
-                        controller: drop_image_room,
-                        decoration: InputDecoration(
-                            hintText:
-                                "${widget.list[widget.index]['image_room']}",
-                            labelText: "รูปสถานที่"),
-                      ),
-                      TextField(
-                        controller: drop_api_degrees,
-                        decoration: InputDecoration(
-                            hintText:
-                                "${widget.list[widget.index]['api_degrees']}",
-                            labelText: "Apiที่รับข้อมูล"),
-                      ),
+                      // TextField(
+                      //   controller: drop_image_room,
+                      //   decoration: InputDecoration(
+                      //       hintText:
+                      //           "${widget.list[widget.index]['image_room']}",
+                      //       labelText: "รูปสถานที่"),
+                      // ),
+                      // TextField(
+                      //   controller: drop_api_degrees,
+                      //   decoration: InputDecoration(
+                      //       hintText:
+                      //           "${widget.list[widget.index]['api_degrees']}",
+                      //       labelText: "Apiที่รับข้อมูล"),
+                      // ),
                       Text('หน่วยงานที่เป็นเจ้าของสถานที่'),
                       TextField(
                         controller: drop_id_position,

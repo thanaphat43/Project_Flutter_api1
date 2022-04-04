@@ -2,7 +2,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:day14/Pageadmin/Mamager_User/editdata.dart';
+import 'package:day14/Pageadmin/Manager_User/editdata.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -161,13 +161,6 @@ class Search_userState extends State<Search_user> {
                               topLeft: Radius.circular(8.0),
                               topRight: Radius.circular(8.0),
                             ),
-                            // child: Image.network(
-                            //     // (list[i]['imageStaff'])
-                            //     (userLists[index].imageStaff),
-
-                            //     // width: 300,
-                            //     height: 150,
-                            //     fit: BoxFit.fill),
                           ),
                           ListTile(
                             title: Text(
@@ -175,22 +168,6 @@ class Search_userState extends State<Search_user> {
 
                               // list[i]['room_name']
                             ),
-                            // subtitle: FlatButton(
-                            //   onPressed: () {
-                            //     Navigator.push(
-                            //       context,
-                            //       MaterialPageRoute(
-                            //         builder: (context) =>
-                            //             Edit(list: userLists, index: index),
-                            //       ),
-                            //     );
-                            //   },
-                            //   child: Text(
-                            //     'Edit',
-                            //     style:
-                            //         TextStyle(color: Colors.blue, fontSize: 15),
-                            //   ),
-                            // ),
                           ),
                         ],
                       ),
@@ -206,8 +183,6 @@ class Search_userState extends State<Search_user> {
   }
 }
 
-//Declare Subject class for json data or parameters of json string/data
-//Class For Subject
 class Subject {
   int idStaff;
   String firstName;

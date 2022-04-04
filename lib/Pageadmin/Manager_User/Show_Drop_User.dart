@@ -1,6 +1,6 @@
-import 'package:day14/Pageadmin/Mamager_User/dropdata.dart';
-import 'package:day14/Pageadmin/Mamager_User/editdata.dart';
-import 'package:day14/Pageadmin/Mamager_User/newdata.dart';
+import 'package:day14/Pageadmin/Manager_User/dropdata.dart';
+import 'package:day14/Pageadmin/Manager_User/editdata.dart';
+import 'package:day14/Pageadmin/Manager_User/newdata.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_mysql_crud/details.dart';
@@ -106,72 +106,3 @@ class Items extends StatelessWidget {
     );
   }
 }
-
-// import 'package:flutter/material.dart';
-
-// class Home2 extends StatelessWidget {
-//   static const String _title = 'Flutter Code Sample';
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: _title,
-//       home: Scaffold(
-//         appBar: AppBar(title: const Text(_title)),
-//         body: MyStatelessWidget(),
-//       ),
-//     );
-//   }
-// }
-
-// class MyStatelessWidget extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return DataTable(
-//       columns: const <DataColumn>[
-//         DataColumn(
-//           label: Text(
-//             'Name',
-//             style: TextStyle(fontStyle: FontStyle.italic),
-//           ),
-//         ),
-//         DataColumn(
-//           label: Text(
-//             'Age',
-//             style: TextStyle(fontStyle: FontStyle.italic),
-//           ),
-//         ),
-//         DataColumn(
-//           label: Text(
-//             'Role',
-//             style: TextStyle(fontStyle: FontStyle.italic),
-//           ),
-//         ),
-//       ],
-//       rows: const <DataRow>[
-//         DataRow(
-//           cells: <DataCell>[
-//             DataCell(Text('Sarah')),
-//             DataCell(Text('19')),
-//             DataCell(Text('Student')),
-//           ],
-//         ),
-//         DataRow(
-//           cells: <DataCell>[
-//             DataCell(Text('Janine')),
-//             DataCell(Text('43')),
-//             DataCell(Text('Professor')),
-//           ],
-//         ),
-//         DataRow(
-//           cells: <DataCell>[
-//             DataCell(Text('William')),
-//             DataCell(Text('27')),
-//             DataCell(Text('Associate Professor')),
-//           ],
-//         ),
-//       ],
-//     );
-//   }
-// }
-

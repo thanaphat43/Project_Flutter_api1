@@ -1,18 +1,14 @@
-import 'package:day14/Pageadmin/Mamager_User/Search_user.dart';
-import 'package:day14/Pageadmin/Mamager_User/Show_Drop_User.dart';
-import 'package:day14/Pageadmin/Mamager_User/Show_Edit_User.dart';
-import 'package:day14/Pageadmin/Mamager_User/newdata.dart';
-import 'package:day14/Pageadmin/Mamager_position/show_drop_position.dart';
-import 'package:day14/Pageadmin/Mamager_position/Show_Edit_position.dart';
-import 'package:day14/Pageadmin/Mamager_position/newposition.dart';
-
+import 'package:day14/Pageadmin/Manager_User/Search_user.dart';
+import 'package:day14/Pageadmin/Manager_User/Show_Drop_User.dart';
+import 'package:day14/Pageadmin/Manager_User/Show_Edit_User.dart';
+import 'package:day14/Pageadmin/Manager_User/newdata.dart';
 import 'package:day14/Pageadmin/Manager_Room/ShowRoom_Drop.dart';
 import 'package:day14/Pageadmin/Manager_Room/ShowRoom_Edit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
 
-class Manage_Position extends StatelessWidget {
+class Manage_User extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,7 +16,7 @@ class Manage_Position extends StatelessWidget {
         backgroundColor: Colors.white.withOpacity(.94),
         appBar: AppBar(
           title: Text(
-            "หน่วยงาน",
+            "จัดการผู้ใช้ระบบ",
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
@@ -37,17 +33,14 @@ class Manage_Position extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        // MaterialPageRoute(
-                        //   builder: (context) => Show_Edit_User(),
-                        // ),
                         MaterialPageRoute(
-                          builder: (context) => AddPosition(),
+                          builder: (context) => AddData(),
                         ),
                       );
                     },
                     icons: CupertinoIcons.person_alt_circle,
                     iconStyle: IconStyle(),
-                    title: 'เพิ่มหน่วยงาน',
+                    title: 'เพิ่มสมาชิก',
                     // subtitle: "",
                   ),
                 ],
@@ -58,17 +51,14 @@ class Manage_Position extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        // MaterialPageRoute(
-                        //   builder: (context) => Show_Edit_User(),
-                        // ),
                         MaterialPageRoute(
-                          builder: (context) => Show_Edit_position(),
+                          builder: (context) => Show_Edit_User(),
                         ),
                       );
                     },
                     icons: CupertinoIcons.person_alt_circle,
                     iconStyle: IconStyle(),
-                    title: 'แก้ไขหน่วยงาน',
+                    title: 'แก้ไขสมาชิก',
                     // subtitle: "Make Ziar'App yours",
                   ),
                 ],
@@ -80,13 +70,13 @@ class Manage_Position extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Drop_position(),
+                          builder: (context) => DropUser(),
                         ),
                       );
                     },
                     icons: CupertinoIcons.person_alt_circle,
                     iconStyle: IconStyle(),
-                    title: 'ลบหน่วยงาน',
+                    title: 'ระงับผู้ใช้งาน',
                     // subtitle: "Make Ziar'App yours",
                   ),
                 ],

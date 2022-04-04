@@ -8,15 +8,6 @@ import 'package:http/http.dart' as http;
 
 import '../../connect/ip.dart';
 
-// void main() => runApp(MaterialApp(
-//       title: "Api Test",
-//       debugShowCheckedModeBanner: false,
-//       theme: ThemeData(
-//         primarySwatch: Colors.red,
-//       ),
-//       home: LoginPage(),
-//     ));
-
 class Home_room_Drop extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -35,14 +26,6 @@ class _HomeState extends State<Home_room_Drop> {
       appBar: AppBar(
         title: Text("ระงับสถานที่"),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () => Navigator.of(context).push(
-      //     MaterialPageRoute(
-      //       builder: (BuildContext contex) => Add_Room2(),
-      //     ),
-      //   ),
-      //   child: Icon(Icons.add),
-      // ),
       body: FutureBuilder<List>(
         future: getData(),
         builder: (ctx, ss) {
@@ -73,17 +56,6 @@ class Items extends StatelessWidget {
         return ListTile(
           leading: Icon(Icons.person),
           title: Text(list[i]['room_name']),
-          // subtitle: Text(list[i]['mobile']),
-
-          // onTap: () => Navigator.of(context).push(
-          //   MaterialPageRoute(
-          //     // builder: (BuildContext context) => Detail(list: list, index: i),
-          //     // builder: (BuildContext context) => delete(),
-          //     builder: (BuildContext context) =>
-          //         Edit_room(list: list, index: i),
-          //   ),
-          // ),
-
           subtitle: FlatButton(
             onPressed: () {
               Navigator.push(

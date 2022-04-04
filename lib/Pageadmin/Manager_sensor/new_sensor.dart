@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:art_sweetalert/art_sweetalert.dart';
 import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
-import 'package:day14/Pageadmin/Mamager_User/Search_user.dart';
-import 'package:day14/Pageadmin/Mamager_User/Show_Drop_User.dart';
-import 'package:day14/Pageadmin/Mamager_User/adminSetting_User.dart';
-import 'package:day14/Pageadmin/Mamager_position/adminSetting_Position.dart';
+import 'package:day14/Pageadmin/Manager_User/Search_user.dart';
+import 'package:day14/Pageadmin/Manager_User/Show_Drop_User.dart';
+import 'package:day14/Pageadmin/Manager_User/adminSetting_User.dart';
+import 'package:day14/Pageadmin/Manager_position/adminSetting_Position.dart';
 
 import 'package:flutter/material.dart';
 import 'package:sweetalert/sweetalert.dart';
@@ -13,23 +13,22 @@ import 'package:http/http.dart' as http;
 
 import '../../connect/ip.dart';
 
-class AddPosition extends StatefulWidget {
+class AddSensor extends StatefulWidget {
   @override
   _AddDataState createState() => new _AddDataState();
 }
 
-class _AddDataState extends State<AddPosition> {
-  TextEditingController name_position = new TextEditingController();
-  // TextEditingController id_position = new TextEditingController();
+class _AddDataState extends State<AddSensor> {
+  TextEditingController sensor_id = new TextEditingController();
+  TextEditingController sensor_name = new TextEditingController();
 
   void confirm() {
     AlertDialog alertDialog = new AlertDialog(
-      content:
-          new Text("คุณต้องการเพิ่มหน่วยงาน'${name_position.text}'ใช่หรือไหม"),
+      content: new Text("คุณต้องการเพิ่มsensor'${sensor_name.text}'ใช่หรือไหม"),
       actions: <Widget>[
         new RaisedButton(
           child: new Text(
-            "เพิ่มหน่วย",
+            "เครื่องวัดอุณหภูมิ(sensor)",
             style: new TextStyle(color: Colors.black),
           ),
           color: Colors.green,
@@ -49,20 +48,21 @@ class _AddDataState extends State<AddPosition> {
   }
 
   void addData() {
-    var url = "${IP().connect}/add_staff_position";
+    var url = "${IP().connect}/add_sensor";
 
     http.post(Uri.parse(url), body: {
-      "name_position": name_position.text,
+      "sensor_id": sensor_id.text,
+      "sensor_name": sensor_name.text,
     });
   }
 
   void check_position() async {
-    String apiurl = "${IP().connect}/check_staff_position";
+    String apiurl = "${IP().connect}/check_sensor";
 
-    print(name_position);
+    print(sensor_name);
 
     var response = await http.post(Uri.parse(apiurl), body: {
-      'name_position': name_position.text, //get the username text
+      'sensor_name': sensor_name.text, //get the username text
     });
 
     if (response.statusCode == 200) {
@@ -76,11 +76,11 @@ class _AddDataState extends State<AddPosition> {
             context: context,
             artDialogArgs: ArtDialogArgs(
               type: ArtSweetAlertType.danger,
-              title: "ชื่อหน่วยงานใช้งานไปแล้ว",
+              title: "ชื่อวัดอุณหภูมินี้ใช้งานไปแล้ว",
             ),
           );
         });
-      } else if (name_position.text == null) {
+      } else if (sensor_name.text == null) {
         ArtSweetAlert.show(
           context: context,
           artDialogArgs: ArtDialogArgs(
@@ -92,7 +92,8 @@ class _AddDataState extends State<AddPosition> {
         setState(() {
           addData();
           SweetAlert.show(context,
-              title: "คุณได้เพิ่มหน่วยงาน${name_position.text}สำเร็จ",
+              title:
+                  "คุณได้เครื่องวัดอุณหภูมิ(sensor)${sensor_name.text}สำเร็จ",
               style: SweetAlertStyle.success);
         });
       }
@@ -108,7 +109,7 @@ class _AddDataState extends State<AddPosition> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("เพิ่มหน่วยงาน"),
+        title: new Text("เพิ่มSensor"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -128,13 +129,21 @@ class _AddDataState extends State<AddPosition> {
                     child: Column(
                       children: [
                         Container(
-                          child: Text("เพิ่มหน่วยงาน"),
+                          child: Text("เพิ่มSensor"),
                         ),
                         new TextField(
-                          controller: name_position,
+                          controller: sensor_id,
                           decoration: new InputDecoration(
-                            hintText: "เพิ่มหน่วยงาน",
-                            labelText: "เพิ่มหน่วยงาน",
+                            hintText: "id_sensor",
+                            labelText: "id_sensor",
+                            hintStyle: TextStyle(color: Colors.grey),
+                          ),
+                        ),
+                        new TextField(
+                          controller: sensor_name,
+                          decoration: new InputDecoration(
+                            hintText: "ชื่อsensor",
+                            labelText: "ชื่อsensor",
                             hintStyle: TextStyle(color: Colors.grey),
                           ),
                         ),
@@ -155,7 +164,7 @@ class _AddDataState extends State<AddPosition> {
                   confirm();
                 },
                 child: Text(
-                  'เพิ่มหน่วยงาน',
+                  'เพิ่มเครื่องวัดอุณหภูมิ(sensor)',
                   style: TextStyle(color: Colors.red, fontSize: 15),
                 ),
               ),

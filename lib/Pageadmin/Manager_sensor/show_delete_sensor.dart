@@ -1,5 +1,5 @@
-import 'package:day14/Pageadmin/Mamager_position/drop_position.dart';
-import 'package:day14/Pageadmin/Mamager_sensor/drop_position.dart';
+import 'package:day14/Pageadmin/Manager_position/drop_position.dart';
+import 'package:day14/Pageadmin/Manager_sensor/drop_sensor.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +25,7 @@ class _HomeState extends State<Show_Drop_position> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("ระงับการใช้งานของเครื่องวัดอุณหภูมิ(sensor)"),
+        title: Text("ลบเครื่องวัดอุณหภูมิ(sensor)"),
       ),
       body: FutureBuilder<List>(
         future: getData(),
@@ -67,7 +67,7 @@ class Items extends StatelessWidget {
               );
             },
             child: Text(
-              'ระงับการใช้งาน',
+              'ลบเครื่องวัดอุณหภูมิ',
               style: TextStyle(color: Colors.red, fontSize: 15),
             ),
           ),

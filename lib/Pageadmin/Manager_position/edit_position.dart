@@ -1,7 +1,7 @@
-import 'package:day14/Pageadmin/Mamager_User/Show_Drop_User.dart';
-import 'package:day14/Pageadmin/Mamager_User/Show_Edit_User.dart';
-import 'package:day14/Pageadmin/Mamager_position/Show_Edit_position.dart';
-import 'package:day14/Pageadmin/Mamager_position/adminSetting_Position.dart';
+import 'package:day14/Pageadmin/Manager_User/Show_Drop_User.dart';
+import 'package:day14/Pageadmin/Manager_User/Show_Edit_User.dart';
+import 'package:day14/Pageadmin/Manager_position/Show_Edit_position.dart';
+import 'package:day14/Pageadmin/Manager_position/adminSetting_Position.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_mysql_crud/main.dart';
@@ -133,52 +133,3 @@ class _EditState extends State<Edit_position> {
     );
   }
 }
-
-
-
-//  TextField(
-//                       controller: first_name,
-//                       decoration: InputDecoration(
-//                           hintText:
-//                               "${widget.list[widget.index]['first_name']}",
-//                           labelText: "First_name"),
-//                     ),
-//                     TextField(
-//                       controller: last_name,
-//                       decoration: InputDecoration(
-//                           hintText: "${widget.list[widget.index]['last_name']}",
-//                           labelText: "Last_name"),
-//                     ),
-//                     TextField(
-//                       controller: username,
-//                       decoration: InputDecoration(
-//                           hintText: "${widget.list[widget.index]['username']}",
-//                           labelText: "Username"),
-//                     ),
-//                     TextField(
-//                       controller: password,
-//                       decoration: InputDecoration(
-//                           hintText: "${widget.list[widget.index]['password']}",
-//                           labelText: "Password"),
-//                     ),
-//                     TextField(
-//                       controller: image_staff,
-//                       decoration: InputDecoration(
-//                           hintText:
-//                               "${widget.list[widget.index]['image_staff']}",
-//                           labelText: "image_staff"),
-//                     ),
-//                     TextField(
-//                       controller: id_position,
-//                       decoration: InputDecoration(
-//                           hintText:
-//                               "${widget.list[widget.index]['id_position']}",
-//                           labelText: "Position"),
-//                     ),
-//                     TextField(
-//                       controller: name_position,
-//                       decoration: InputDecoration(
-//                           hintText:
-//                               "${widget.list[widget.index]['name_position']}",
-//                           labelText: "Enter Mobile"),
-//                     ),

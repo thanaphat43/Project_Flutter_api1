@@ -1,5 +1,5 @@
 import 'package:art_sweetalert/art_sweetalert.dart';
-import 'package:day14/Pageadmin/Mamager_User/Show_Drop_User.dart';
+import 'package:day14/Pageadmin/Manager_User/Show_Drop_User.dart';
 import 'package:day14/Pageadmin/Manager_Room/ShowRoom_Edit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -165,13 +165,13 @@ class _EditState extends State<Edit_room> {
                                 "${widget.list[widget.index]['room_name']}",
                             labelText: "ชื่อสถานที่"),
                       ),
-                      TextField(
-                        controller: image_room,
-                        decoration: InputDecoration(
-                            hintText:
-                                "${widget.list[widget.index]['image_room']}",
-                            labelText: "รูปสถานที่"),
-                      ),
+                      // TextField(
+                      //   controller: image_room,
+                      //   decoration: InputDecoration(
+                      //       hintText:
+                      //           "${widget.list[widget.index]['image_room']}",
+                      //       labelText: "รูปสถานที่"),
+                      // ),
 
                       Text('หน่วยงานที่เป็นเจ้าของสถานที่'),
                       new DropdownButton(

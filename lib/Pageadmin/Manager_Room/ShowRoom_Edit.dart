@@ -1,29 +1,12 @@
 import 'package:day14/Pageadmin/Manager_Room/Edit_room.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_mysql_crud/details.dart';
-// import 'package:flutter_mysql_crud/page1/login.dart';
-// import 'package:flutter_mysql_crud/pageAdmin/Mamager_User/dropdata.dart';
-// import 'package:flutter_mysql_crud/pageAdmin/Mamager_User/editdata.dart';
-// import 'package:flutter_mysql_crud/pageAdmin/Mamager_User/newdata.dart';
-// import 'package:flutter_mysql_crud/pageAdmin/Manager_Room/Edit_room.dart';
-// import 'package:flutter_mysql_crud/pageAdmin/Manager_Room/addRoom.dart';
-// import 'package:flutter_mysql_crud/pageAdmin/Manager_Room/drop_room.dart';
-// import 'package:flutter_mysql_crud/pageAdmin/Manager_Room/new_room.dart';
+
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../connect/ip.dart';
-
-// void main() => runApp(MaterialApp(
-//       title: "Api Test",
-//       debugShowCheckedModeBanner: false,
-//       theme: ThemeData(
-//         primarySwatch: Colors.red,
-//       ),
-//       home: LoginPage(),
-//     ));
 
 class Home_room_Edit extends StatefulWidget {
   @override
@@ -43,14 +26,6 @@ class _HomeState extends State<Home_room_Edit> {
       appBar: AppBar(
         title: Text("ShowRoom_Edit"),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () => Navigator.of(context).push(
-      //     MaterialPageRoute(
-      //       builder: (BuildContext contex) => Add_Room2(),
-      //     ),
-      //   ),
-      //   child: Icon(Icons.add),
-      // ),
       body: FutureBuilder<List>(
         future: getData(),
         builder: (ctx, ss) {

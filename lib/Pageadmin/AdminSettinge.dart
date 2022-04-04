@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'package:day14/Pageadmin/Mamager_User/adminSetting_User.dart';
-import 'package:day14/Pageadmin/Mamager_position/adminSetting_Position.dart';
-import 'package:day14/Pageadmin/Mamager_sensor/admin_setting_sensor.dart';
+import 'package:day14/Pageadmin/Manager_User/adminSetting_User.dart';
+import 'package:day14/Pageadmin/Manager_position/adminSetting_Position.dart';
+import 'package:day14/Pageadmin/Manager_sensor/admin_setting_sensor.dart';
 import 'package:day14/Pageadmin/ManageUser.dart';
 import 'package:day14/Pageadmin/Manager_Room/adminSetting_Room.dart';
 import 'package:flutter/cupertino.dart';

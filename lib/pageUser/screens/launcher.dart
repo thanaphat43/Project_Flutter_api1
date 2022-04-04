@@ -1,4 +1,4 @@
-import 'package:day14/pageUser/SearchRoom.dart';
+import 'package:day14/pageUser/SearchLocation.dart';
 import 'package:day14/pageUser/Profile.dart';
 import 'package:day14/pageUser/sign_out.dart';
 import 'package:flutter/material.dart';

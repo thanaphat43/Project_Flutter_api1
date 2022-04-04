@@ -92,7 +92,7 @@ class _HomeAppState extends State<HomeApp> {
                   FadeAnimation(
                       1,
                       Text(
-                        "Room Temperature",
+                        "ระบบตรวจวัดอุณหภูมิ",
                         style: TextStyle(color: Colors.white, fontSize: 35),
                       )),
                   SizedBox(
@@ -101,7 +101,7 @@ class _HomeAppState extends State<HomeApp> {
                   FadeAnimation(
                       1.3,
                       Text(
-                        "Welcome Back",
+                        "ยินดีต้อนรับ",
                         style: TextStyle(color: Colors.white, fontSize: 18),
                       )),
                 ],
@@ -111,12 +111,6 @@ class _HomeAppState extends State<HomeApp> {
             Expanded(
               child: Container(
                 constraints: BoxConstraints.expand(),
-                // decoration: BoxDecoration(
-                //   image: DecorationImage(
-                //     image: backgroundImage,
-                //     fit: BoxFit.cover,
-                //   ),
-                // ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -170,39 +164,6 @@ class _HomeAppState extends State<HomeApp> {
           ],
         ),
       ),
-      // body: Container(
-      //   constraints: BoxConstraints.expand(),
-      //   decoration: BoxDecoration(
-      //     image: DecorationImage(
-      //       image: backgroundImage,
-      //       fit: BoxFit.cover,
-      //     ),
-      //   ),
-      //   child: Column(
-      //     crossAxisAlignment: CrossAxisAlignment.stretch,
-      //     children: [
-      //       SizedBox(
-      //         height: 85,
-      //       ),
-      //       Container(
-      //         child: weatherDisplayIcon,
-      //       ),
-      //       SizedBox(
-      //         height: 15.0,
-      //       ),
-      //       Center(
-      //         child: Text(
-      //           ' $temperature°',
-      //           style: TextStyle(
-      //             color: Colors.white,
-      //             fontSize: 80.0,
-      //             letterSpacing: -5,
-      //           ),
-      //         ),
-      //       ),
-      //     ],
-      //   ),
-      // ),
     );
   }
 }

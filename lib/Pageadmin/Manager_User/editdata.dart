@@ -1,77 +1,61 @@
-import 'package:day14/Pageadmin/Mamager_User/Show_Drop_User.dart';
+import 'package:day14/Pageadmin/Manager_User/Show_Drop_User.dart';
+import 'package:day14/Pageadmin/Manager_User/Show_Edit_User.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+// import 'package:flutter_mysql_crud/main.dart';
+// import 'package:flutter_mysql_crud/pageAdmin/Mamager_User/Show_Drop_User.dart';
+import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../connect/ip.dart';
 
-class dropdata extends StatefulWidget {
+class Edit extends StatefulWidget {
   final List list;
   final int index;
 
-  dropdata({this.list, this.index});
+  Edit({this.list, this.index});
 
   @override
   _EditState createState() => _EditState();
 }
 
-class _EditState extends State<dropdata> {
+class _EditState extends State<Edit> {
   TextEditingController first_name = new TextEditingController();
   TextEditingController last_name = new TextEditingController();
   TextEditingController username = new TextEditingController();
   TextEditingController password = new TextEditingController();
   TextEditingController image_staff = new TextEditingController();
+  TextEditingController id_position = new TextEditingController();
   TextEditingController name_position = new TextEditingController();
 
-  void dropdata() {
-    var url = "${IP().connect}/dropuser";
-    http.post(Uri.parse(url), body: {
+  void editData() {
+    var url =
+        "${IP().connect}/updeta_user/${widget.list[widget.index]['id_staff']}";
+    http.put(Uri.parse(url), body: {
       "first_name": first_name.text,
       "last_name": last_name.text,
       "username": username.text,
       "password": password.text,
-      // "image_staff": image_staff.text,
-      "image_staff": "",
+      "image_staff": image_staff.text,
+      "id_position": id_position.text,
       "name_position": name_position.text,
     });
   }
 
-  void deleteData() {
-    var url = "${IP().connect}/delete/${widget.list[widget.index]['id_staff']}";
-    http.delete(Uri.parse(url));
-    //  ,body: {'id': widget.list[widget.index]['id']}
-  }
-
-  void confirm() {
-    AlertDialog alertDialog = new AlertDialog(
-      content: new Text(
-          "Are You sure want to drop '${widget.list[widget.index]['username']}'"),
-      actions: <Widget>[
-        new RaisedButton(
-          child: new Text(
-            "OK drop!",
-            style: new TextStyle(color: Colors.black),
-          ),
-          color: Colors.red,
-          onPressed: () {
-            dropdata();
-            deleteData();
-            Navigator.of(context).push(new MaterialPageRoute(
-              builder: (BuildContext context) => new DropUser(),
-            ));
-          },
-        ),
-        new RaisedButton(
-          child: new Text("CANCEL", style: new TextStyle(color: Colors.black)),
-          color: Colors.green,
-          onPressed: () => Navigator.pop(context),
-        ),
-      ],
-    );
-
-    showDialog(builder: (context) => alertDialog, context: context);
+  String _mySelection;
+  final String url = "${IP().connect}/staff_position_room";
+  List data = List(); //edited line
+  Future<String> getSWData() async {
+    var res = await http.get(Uri.parse(url)
+        // , headers: {"Accept": "application/json"}
+        );
+    var resBody = json.decode(res.body);
+    setState(() {
+      data = resBody;
+    });
+    print(resBody);
+    return "Sucess";
   }
 
   @override
@@ -86,17 +70,20 @@ class _EditState extends State<dropdata> {
         TextEditingController(text: widget.list[widget.index]['password']);
     // image_staff =
     //     TextEditingController(text: widget.list[widget.index]['image_staff']);
+    id_position = TextEditingController(
+        text: widget.list[widget.index]['id_position'].toString());
     name_position = TextEditingController(
         text: widget.list[widget.index]['name_position'].toString());
-
     super.initState();
+    this.getSWData();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("ระงับผู้ใช้ ${widget.list[widget.index]['username']}"),
+        title: Text(
+            "แก้ไขของข้อมูลของ ${widget.list[widget.index]['first_name']} ${widget.list[widget.index]['last_name']}"),
       ),
       body: ListView(
         children: [
@@ -114,7 +101,7 @@ class _EditState extends State<dropdata> {
                   child: Column(
                     children: [
                       Container(
-                        child: Text("ระงับผู้ใช้"),
+                        child: Text("แก้ไขของข้อมูลสมาชิก"),
                       ),
                       TextField(
                         controller: first_name,
@@ -177,10 +164,14 @@ class _EditState extends State<dropdata> {
             height: 60,
             child: FlatButton(
               onPressed: () {
-                confirm();
+                editData();
+                Navigator.of(context).pop(
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => new Show_Edit_User()),
+                );
               },
               child: Text(
-                'DropUser',
+                'แก้ไขของข้อมูลสมาชิก',
                 style: TextStyle(color: Colors.red, fontSize: 15),
               ),
             ),

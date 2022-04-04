@@ -1,11 +1,10 @@
-import 'package:day14/Pageadmin/Mamager_User/editdata.dart';
-import 'package:day14/Pageadmin/Mamager_User/newdata.dart';
-import 'package:day14/Pageadmin/Mamager_position/edit_position.dart';
-import 'package:day14/Pageadmin/Mamager_sensor/edit_sensor.dart';
+import 'package:day14/Pageadmin/Manager_position/drop_position.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_mysql_crud/details.dart';
 // import 'package:flutter_mysql_crud/page1/login.dart';
+// import 'package:flutter_mysql_crud/pageAdmin/Mamager_User/dropdata.dart';
 // import 'package:flutter_mysql_crud/pageAdmin/Mamager_User/editdata.dart';
 // import 'package:flutter_mysql_crud/pageAdmin/Mamager_User/newdata.dart';
 import 'dart:async';
@@ -14,23 +13,15 @@ import 'package:http/http.dart' as http;
 
 import '../../connect/ip.dart';
 
-// void main() => runApp(MaterialApp(
-//       title: "Api Test",
-//       debugShowCheckedModeBanner: false,
-//       theme: ThemeData(
-//         primarySwatch: Colors.red,
-//       ),
-//       home: LoginPage(),
-//     ));
-
-class Show_Edit_sensor extends StatefulWidget {
+class Drop_position extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Show_Edit_sensor> {
+class _HomeState extends State<Drop_position> {
   Future<List> getData() async {
-    final responce = await http.get(Uri.parse("${IP().connect}/sensor"));
+    final responce =
+        await http.get(Uri.parse("${IP().connect}/staff_position_room"));
     print(responce);
     return jsonDecode(responce.body);
   }
@@ -39,16 +30,16 @@ class _HomeState extends State<Show_Edit_sensor> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("แสดงข้อมูลของเครื่องวัดอุณหภูมิ(sensor)และแก้ไข"),
+        title: Text("ระงับการใช้งานของสมาชิก"),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (BuildContext contex) => AddData(),
-          ),
-        ),
-        child: Icon(Icons.add),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () => Navigator.of(context).push(
+      //     MaterialPageRoute(
+      //       builder: (BuildContext contex) => AddData(),
+      //     ),
+      //   ),
+      //   child: Icon(Icons.add),
+      // ),
       body: FutureBuilder<List>(
         future: getData(),
         builder: (ctx, ss) {
@@ -78,28 +69,27 @@ class Items extends StatelessWidget {
       itemBuilder: (ctx, i) {
         return ListTile(
           leading: Icon(Icons.person),
-          title: Text(list[i]['sensor_name']),
+          title: Text(list[i]['name_position']),
           // subtitle: Text(list[i]['mobile']),
 
-          onTap: () => Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (BuildContext context) =>
-                  Edit_sensor(list: list, index: i),
-            ),
-          ),
+          // onTap: () => Navigator.of(context).push(
+          //   MaterialPageRoute(
+          //     builder: (BuildContext context) => Edit(list: list, index: i),
+          //   ),
+          // ),
 
           subtitle: FlatButton(
             onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Edit_sensor(list: list, index: i),
+                  builder: (context) => dropdata(list: list, index: i),
                 ),
               );
             },
             child: Text(
-              'แก้ไขเครื่องวัดอุณหภูมิ(sensor)',
-              style: TextStyle(color: Colors.blue, fontSize: 15),
+              'ระงับการใช้งาน',
+              style: TextStyle(color: Colors.red, fontSize: 15),
             ),
           ),
         );

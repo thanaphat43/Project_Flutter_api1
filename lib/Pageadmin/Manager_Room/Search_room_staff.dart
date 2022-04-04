@@ -1,7 +1,6 @@
 //declare packages
 import 'dart:async';
 import 'dart:convert';
-import 'package:day14/Pageadmin/Manager_Room/Page_test.dart';
 
 import 'package:day14/pageUser/PageLocation.dart';
 import 'package:flutter/cupertino.dart';
@@ -161,17 +160,11 @@ class SearchRoomState extends State<Search_room_staff> {
                       onTap: () => Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) =>
-                              Page_test(list: userLists, index: index),
+                              // PageRoom(list: userLists, index: index),
+                              PageRoom(list: userLists, index: index),
+                          // Test_Data(),
                         ),
                       ),
-                      // onTap: () => Navigator.of(context).push(
-                      //   MaterialPageRoute(
-                      //     builder: (context) =>
-                      //         // PageRoom(list: userLists, index: index),
-                      //         PageLocation(list: userLists, index: index),
-                      //     // Test_Data(),
-                      //   ),
-                      // ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
@@ -208,27 +201,6 @@ class SearchRoomState extends State<Search_room_staff> {
   }
 }
 
-//Declare Subject class for json data or parameters of json string/data
-//Class For Subject
-// class Subject {
-//   String roomName;
-//   String imageRoom;
-
-//   Subject({this.roomName, this.imageRoom});
-
-//   Subject.fromJson(Map<String, dynamic> json) {
-//     roomName = json['room_name'];
-//     imageRoom = json['image_room'];
-//   }
-
-//   Map<String, dynamic> toJson() {
-//     final Map<String, dynamic> data = new Map<String, dynamic>();
-//     data['room_name'] = this.roomName;
-//     data['image_room'] = this.imageRoom;
-//     return data;
-//   }
-// }
-
 class Subject {
   int roomId;
   String roomName;
@@ -250,118 +222,3 @@ class Subject {
     return data;
   }
 }
-
-// import 'package:flutter/material.dart';
-// import 'package:http/http.dart' as http;
-// import 'dart:convert';
-
-// import 'package:shared_preferences/shared_preferences.dart'; // for using json.decode()
-
-// class Mytest extends StatefulWidget {
-//   @override
-//   _HomePageState createState() => _HomePageState();
-// }
-
-// int id_position;
-// String y = id_position.toString();
-// String first_name;
-
-// class _HomePageState extends State<Mytest> {
-//   // The list that contains information about photos
-//   List _loadedPhotos = [];
-
-//   void initState() {
-//     getUser();
-//     super.initState();
-//   }
-
-//   Future getUser() async {
-//     SharedPreferences preferences = await SharedPreferences.getInstance();
-//     setState(
-//       () {
-//         id_position = preferences.getInt('id_position');
-//         first_name = preferences.getString('first_name');
-
-//         print(id_position);
-//       },
-//     );
-//   }
-
-//   Future<void> _fetchData() async {
-//     const API_URL = 'http://192.168.1.6:3000/position_room/';
-
-//     final response = await http.get(Uri.parse(API_URL + y));
-//     final data1 = json.decode(response.body);
-//     print(data1);
-//     setState(() {
-//       _loadedPhotos = data1;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Kindacode.com'),
-//       ),
-//       body: SafeArea(
-//         child: _loadedPhotos.length == 0
-//             ? Center(
-//                 child: ElevatedButton(
-//                   child: Text(first_name.toString()),
-//                   onPressed: _fetchData,
-//                 ),
-//               )
-//             // The ListView that displays photos
-//             : ListView.builder(
-//                 itemCount: _loadedPhotos.length,
-//                 itemBuilder: (BuildContext ctx, index) {
-//                   return Center(
-//                     child: Column(
-//                       mainAxisAlignment: MainAxisAlignment.center,
-//                       crossAxisAlignment: CrossAxisAlignment.center,
-//                       children: <Widget>[
-//                         Text(
-//                           _loadedPhotos[index]["username"],
-//                           textAlign: TextAlign.start,
-//                           style: TextStyle(
-//                             fontSize: 20,
-//                             fontWeight: FontWeight.w500,
-//                           ),
-//                         ),
-//                         Text(_loadedPhotos[index]['image_staff']),
-//                         Text('Photo ID: ${_loadedPhotos[index]["id_staff"]}'),
-//                         Text('Photo ID: ${_loadedPhotos[index]["staff_room"]}'),
-//                         Text('Photo ID: ${_loadedPhotos[index]["password"]}'),
-//                       ],
-//                     ),
-//                   );
-//                 },
-//               ),
-//       ),
-//     );
-//   }
-// }
-
-
-//  return Center(
-//               child: Column(
-//                 mainAxisAlignment: MainAxisAlignment.center,
-//                 crossAxisAlignment: CrossAxisAlignment.center,
-//                 children: <Widget>[
-//                   Text(
-//                       _loadedPhotos[index]["username"],
-//                     textAlign: TextAlign.start,
-//                     style: TextStyle(
-//                       fontSize: 20,
-//                       fontWeight: FontWeight.w500,
-//                     ),
-//                   ),
-//                  Text(_loadedPhotos[index]['image_staff']),
-//               
-//                    Text('Photo ID: ${_loadedPhotos[index]["id_staff"]}'),
-//                    Text('Photo ID: ${_loadedPhotos[index]["staff_room"]}'),
-//                         Text('Photo ID: ${_loadedPhotos[index]["password"]}'),
-//                 ],
-//               ),
-//             );

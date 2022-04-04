@@ -1,22 +1,36 @@
 import 'package:day14/Pageadmin/Manager_User/editdata.dart';
 import 'package:day14/Pageadmin/Manager_User/newdata.dart';
+import 'package:day14/Pageadmin/Manager_position/edit_position.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+// import 'package:flutter_mysql_crud/details.dart';
+// import 'package:flutter_mysql_crud/page1/login.dart';
+// import 'package:flutter_mysql_crud/pageAdmin/Mamager_User/editdata.dart';
+// import 'package:flutter_mysql_crud/pageAdmin/Mamager_User/newdata.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../connect/ip.dart';
 
-class Home3 extends StatefulWidget {
+// void main() => runApp(MaterialApp(
+//       title: "Api Test",
+//       debugShowCheckedModeBanner: false,
+//       theme: ThemeData(
+//         primarySwatch: Colors.red,
+//       ),
+//       home: LoginPage(),
+//     ));
+
+class Show_Edit_position extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home3> {
+class _HomeState extends State<Show_Edit_position> {
   Future<List> getData() async {
-    final responce = await http.get(Uri.parse("${IP().connect}/apistaff"));
+    final responce =
+        await http.get(Uri.parse("${IP().connect}/staff_position_room"));
     print(responce);
     return jsonDecode(responce.body);
   }
@@ -25,7 +39,7 @@ class _HomeState extends State<Home3> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("My App Bar"),
+        title: Text("แสดงข้อมูลของสมาชิกและแก้ไข"),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.of(context).push(
@@ -64,7 +78,7 @@ class Items extends StatelessWidget {
       itemBuilder: (ctx, i) {
         return ListTile(
           leading: Icon(Icons.person),
-          title: Text(list[i]['username']),
+          title: Text(list[i]['name_position']),
           // subtitle: Text(list[i]['mobile']),
 
           onTap: () => Navigator.of(context).push(
@@ -80,12 +94,12 @@ class Items extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Edit(list: list, index: i),
+                  builder: (context) => Edit_position(list: list, index: i),
                 ),
               );
             },
             child: Text(
-              'แก้ไข',
+              'แก้ไขหน่วยงาน',
               style: TextStyle(color: Colors.blue, fontSize: 15),
             ),
           ),

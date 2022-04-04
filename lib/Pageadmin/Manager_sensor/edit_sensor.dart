@@ -1,52 +1,51 @@
-import 'package:day14/Pageadmin/Mamager_User/Show_Drop_User.dart';
-import 'package:day14/Pageadmin/Mamager_position/adminSetting_Position.dart';
+import 'package:day14/Pageadmin/Manager_User/Show_Drop_User.dart';
+import 'package:day14/Pageadmin/Manager_User/Show_Edit_User.dart';
+import 'package:day14/Pageadmin/Manager_position/Show_Edit_position.dart';
+import 'package:day14/Pageadmin/Manager_position/adminSetting_Position.dart';
+import 'package:day14/Pageadmin/Manager_sensor/admin_setting_sensor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+// import 'package:flutter_mysql_crud/main.dart';
+// import 'package:flutter_mysql_crud/pageAdmin/Mamager_User/Show_Drop_User.dart';
+import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../connect/ip.dart';
 
-class dropdata extends StatefulWidget {
+class Edit_sensor extends StatefulWidget {
   final List list;
   final int index;
 
-  dropdata({this.list, this.index});
+  Edit_sensor({this.list, this.index});
 
   @override
   _EditState createState() => _EditState();
 }
 
-class _EditState extends State<dropdata> {
-  TextEditingController name_position = new TextEditingController();
-
-  void deleteData() {
-    var url =
-        "${IP().connect}/delete_staff_position/${widget.list[widget.index]['id_position']}";
-    http.delete(Uri.parse(url));
-    //  ,body: {'id': widget.list[widget.index]['id']}
-  }
+class _EditState extends State<Edit_sensor> {
+  TextEditingController sensor_name = new TextEditingController();
 
   void confirm() {
     AlertDialog alertDialog = new AlertDialog(
       content: new Text(
-          "คุณต้องการลบหน่วยงานนี้ออกจากระบบใช่หรือไม่'${widget.list[widget.index]['name_position']}'"),
+          "Are You sure want to drop '${widget.list[widget.index]['sensor_name']}'"),
       actions: <Widget>[
-        new RaisedButton(
+        new FlatButton(
           child: new Text(
-            "OK drop!",
+            "OK !",
             style: new TextStyle(color: Colors.black),
           ),
           color: Colors.red,
           onPressed: () {
-            deleteData();
-            Navigator.of(context).pop(new MaterialPageRoute(
-              builder: (BuildContext context) => new DropUser(),
-            ));
+            editData();
+            Navigator.of(context).pop(
+              MaterialPageRoute(
+                  builder: (BuildContext context) => Manage_Position()),
+            );
           },
         ),
-        new RaisedButton(
+        new FlatButton(
           child: new Text("CANCEL", style: new TextStyle(color: Colors.black)),
           color: Colors.green,
           onPressed: () => Navigator.pop(context),
@@ -57,11 +56,18 @@ class _EditState extends State<dropdata> {
     showDialog(builder: (context) => alertDialog, context: context);
   }
 
+  void editData() {
+    var url =
+        "${IP().connect}/updeta_sensor/${widget.list[widget.index]['sensor_id']}";
+    http.put(Uri.parse(url), body: {
+      "sensor_name": sensor_name.text,
+    });
+  }
+
   @override
   void initState() {
-    name_position = TextEditingController(
-        text: widget.list[widget.index]['name_position'].toString());
-
+    sensor_name = TextEditingController(
+        text: widget.list[widget.index]['sensor_name'].toString());
     super.initState();
   }
 
@@ -69,8 +75,8 @@ class _EditState extends State<dropdata> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:
-            Text("ระงับผู้ใช้ ${widget.list[widget.index]['name_position']}"),
+        title: Text(
+            "แก้ไขของข้อมูลของ ${widget.list[widget.index]['sensor_name']}"),
       ),
       body: ListView(
         children: [
@@ -88,14 +94,14 @@ class _EditState extends State<dropdata> {
                   child: Column(
                     children: [
                       Container(
-                        child: Text("ระงับผู้ใช้"),
+                        child: Text("แก้ไขของsensor"),
                       ),
                       TextField(
-                        controller: name_position,
+                        controller: sensor_name,
                         decoration: InputDecoration(
                             hintText:
-                                "${widget.list[widget.index]['name_position']}",
-                            labelText: "ตำแหน่ง"),
+                                "${widget.list[widget.index]['sensor_name']}",
+                            labelText: "sensor"),
                       ),
                     ],
                   ),
@@ -107,16 +113,18 @@ class _EditState extends State<dropdata> {
             width: 20,
             height: 60,
             child: FlatButton(
+              // onPressed: () {
+              //   confirm();
+              // },
               onPressed: () {
-                // confirm();
-                deleteData();
-                Navigator.of(context).pop(
+                editData();
+                Navigator.of(context).push(
                   MaterialPageRoute(
-                      builder: (BuildContext context) => new Manage_Position()),
+                      builder: (BuildContext context) => new Manage_Sensor()),
                 );
               },
               child: Text(
-                'ลบหน่วยงาน',
+                'แก้ไขของข้อมูลสมาชิก',
                 style: TextStyle(color: Colors.red, fontSize: 15),
               ),
             ),

@@ -1,6 +1,7 @@
-import 'package:day14/Pageadmin/Mamager_User/editdata.dart';
-import 'package:day14/Pageadmin/Mamager_User/newdata.dart';
-import 'package:day14/Pageadmin/Mamager_position/edit_position.dart';
+import 'package:day14/Pageadmin/Manager_User/editdata.dart';
+import 'package:day14/Pageadmin/Manager_User/newdata.dart';
+import 'package:day14/Pageadmin/Manager_position/edit_position.dart';
+import 'package:day14/Pageadmin/Manager_sensor/edit_sensor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_mysql_crud/details.dart';
@@ -22,15 +23,14 @@ import '../../connect/ip.dart';
 //       home: LoginPage(),
 //     ));
 
-class Show_Edit_position extends StatefulWidget {
+class Show_Edit_sensor extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Show_Edit_position> {
+class _HomeState extends State<Show_Edit_sensor> {
   Future<List> getData() async {
-    final responce =
-        await http.get(Uri.parse("${IP().connect}/staff_position_room"));
+    final responce = await http.get(Uri.parse("${IP().connect}/sensor"));
     print(responce);
     return jsonDecode(responce.body);
   }
@@ -39,7 +39,7 @@ class _HomeState extends State<Show_Edit_position> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("แสดงข้อมูลของสมาชิกและแก้ไข"),
+        title: Text("แสดงข้อมูลของเครื่องวัดอุณหภูมิ(sensor)และแก้ไข"),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.of(context).push(
@@ -78,14 +78,13 @@ class Items extends StatelessWidget {
       itemBuilder: (ctx, i) {
         return ListTile(
           leading: Icon(Icons.person),
-          title: Text(list[i]['name_position']),
+          title: Text(list[i]['sensor_name']),
           // subtitle: Text(list[i]['mobile']),
 
           onTap: () => Navigator.of(context).push(
             MaterialPageRoute(
-              // builder: (BuildContext context) => Detail(list: list, index: i),
-              // builder: (BuildContext context) => delete(),
-              builder: (BuildContext context) => Edit(list: list, index: i),
+              builder: (BuildContext context) =>
+                  Edit_sensor(list: list, index: i),
             ),
           ),
 
@@ -94,12 +93,12 @@ class Items extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Edit_position(list: list, index: i),
+                  builder: (context) => Edit_sensor(list: list, index: i),
                 ),
               );
             },
             child: Text(
-              'แก้ไขหน่วยงาน',
+              'แก้ไขเครื่องวัดอุณหภูมิ(sensor)',
               style: TextStyle(color: Colors.blue, fontSize: 15),
             ),
           ),
